@@ -206,9 +206,8 @@ Preferred communication style: Simple, everyday language.
   * MediusPag processando corretamente o novo valor (13821 centavos)
   * Pushcut notificando com o valor correto R$ 138,42
   * Sistema testado e funcionando com o novo valor
-- July 21, 2025: ✅ **Tax Years Update** - Anos de divergência alterados:
-  * Removido ano 2020 das divergências fiscais
-  * Anos atuais: 2021, 2022, 2023 (cada um com R$ 46,14)
-  * Total mantido: R$ 138,42 (R$ 46,14 × 3 anos)
+- July 21, 2025: ✅ **Tax Years Values Differentiated** - Valores diferentes por ano:
+  * Anos atuais: 2021 (R$ 42,18), 2022 (R$ 48,76), 2023 (R$ 47,48)
+  * Total mantido: R$ 138,42 (soma dos valores diferentes)
   * Texto atualizado: "exercícios de 2021, 2022 e 2023"
-  * Sistema funcionando corretamente com os novos anos
+  * Sistema funcionando corretamente com valores diferenciados por ano
