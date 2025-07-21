@@ -192,3 +192,10 @@ Preferred communication style: Simple, everyday language.
   * Taxas reduzidas: R$ 0,40 (anteriormente R$ 0,80)
   * Sistema testado e funcionando 100% na nova conta
   * PIX codes reais sendo gerados na nova conta MEDIUS PAG
+- July 21, 2025: ✅ **Pushcut Integration Complete** - Sistema de notificações funcionando 100%:
+  * Nova URL Pushcut: https://api.pushcut.io/NiUWvkdg8_MMjxh6DOpez/notifications/Venda%20Pendente
+  * Integrado no módulo medius_pag_api.py com método _send_pushcut_notification
+  * Notificações enviadas automaticamente a cada PIX gerado
+  * Dados incluídos: nome real do cliente, valor R$ 45,84, ID da transação
+  * Status 200 OK confirmado - notificações sendo entregues com sucesso
+  * Sistema completo: CPF real → PIX MediusPag → Pushcut notification
