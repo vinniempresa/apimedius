@@ -196,6 +196,13 @@ Preferred communication style: Simple, everyday language.
   * Nova URL Pushcut: https://api.pushcut.io/NiUWvkdg8_MMjxh6DOpez/notifications/Venda%20Pendente
   * Integrado no módulo medius_pag_api.py com método _send_pushcut_notification
   * Notificações enviadas automaticamente a cada PIX gerado
-  * Dados incluídos: nome real do cliente, valor R$ 45,84, ID da transação
+  * Dados incluídos: nome real do cliente, valor R$ 138,42, ID da transação
   * Status 200 OK confirmado - notificações sendo entregues com sucesso
   * Sistema completo: CPF real → PIX MediusPag → Pushcut notification
+- July 21, 2025: ✅ **Payment Amount Updated** - Valor total devido alterado:
+  * Valor anterior: R$ 45,84 → Novo valor: R$ 138,42
+  * Interface atualizada: "Total devido: R$ 138,42"
+  * Backend atualizado: amount = 138.42 no código
+  * MediusPag processando corretamente o novo valor (13821 centavos)
+  * Pushcut notificando com o valor correto R$ 138,42
+  * Sistema testado e funcionando com o novo valor

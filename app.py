@@ -185,7 +185,7 @@ def generate_pix():
         # Dados do usuário para a transação PIX
         user_name = customer_data['nome']
         user_cpf = customer_data['cpf'].replace('.', '').replace('-', '')  # Remove formatação
-        amount = 45.84  # Valor fixo de R$ 45,84
+        amount = 138.42  # Valor fixo de R$ 138,42
 
         app.logger.info(f"[PROD] Dados REAIS do cliente na sessão: Nome={user_name}, CPF={user_cpf}")
         app.logger.info(f"[PROD] Dados que serão enviados para MediusPag: Nome={user_name}, CPF={user_cpf}, Email={default_email}")
